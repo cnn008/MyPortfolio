@@ -1,7 +1,5 @@
-import { Box, Heading, Text, SimpleGrid, Badge, Image, VStack } from '@chakra-ui/react'
+import { Box, Heading, Text, SimpleGrid, Badge, VStack, Flex } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
-import saLogo from '../assets/sa.png'
-import nusLogo from '../assets/nus.svg'
 
 function Awards() {
   const scrollToSection = (sectionId: string) => {
@@ -10,29 +8,61 @@ function Awards() {
   }
   const awards = [
     {
-      title: 'ASEAN Secondary Scholarship',
-      organization: 'Saint Andrew\'s Junior College',
-      year: '2014 - 2018',
-      description: 'Full-ride scholarship for 4 years of secondary and junior college education',
-      logo: saLogo,
-      icon: '⭐',
+      title: 'First Prize in Informatics',
+      organization: 'Vietnam National University Olympiad',
+      year: '2024 - 2025',
+      prize: 'First Prize',
+      description: 'Competed in an intensive 3-hour individual programming contest. Achieved a score of 13/20 by solving 4 competitive programming problems. Ranked 4th overall out of 200+ participating students.',
+      icon: '🥇',
     },
     {
-      title: 'ASEAN Undergraduate Scholarship',
-      organization: 'National University of Singapore',
-      year: '2018 - 2022',
-      description: 'Full-ride scholarship for 4 years of undergraduate study',
-      logo: nusLogo,
-      icon: '🎓',
+      title: 'Third Prize (Division C1)',
+      organization: 'National Youth Informatics Contest',
+      year: '2025',
+      prize: 'Third Prize',
+      description: 'Competed in the national-level knockout contest for Informatics-specialized students. Collaborated in a two-member team during a 5-hour intensive optimization contest, designing algorithms and strategies for head-to-head interactive matches; advanced to the Quarter-finals.',
+      icon: '🥉',
     },
     {
-      title: '1st prize winning team | Healthcare track | AIxImpact Case Competition',
-      organization: 'QuantumBlack, a McKinsey company',
-      year: '2022',
-      description: 'Best Project award within the Healthcare track of AIxImpact Case Competition',
-      logo: nusLogo,
-      icon: '⭐',
-    }
+      title: 'Second Prize in Informatics',
+      organization: 'VNU Competition for Gifted Students',
+      year: '2024',
+      prize: 'Second Prize',
+      description: 'Competed in a rigorous 4-day programming marathon comprising 20 algorithmic problems. Demonstrated consistent performance across multiple contest sessions. Ranked 13th overall out of 70 selected participants.',
+      icon: '🥈',
+    },
+    {
+      title: 'First Prize - Informatics Specialization',
+      organization: '5th Central Highlands Olympiad by Vietnam Association for Information Processing',
+      year: '04/2024',
+      prize: 'First Prize',
+      description: 'Secured rank 15 out of 160+ contestants in the Specialized Division. Scored 180/300 points across 3 competitive programming problems within 3 hours.',
+      icon: '🥇',
+    },
+    {
+      title: 'Bronze Medal',
+      organization: 'HSGS Olympiad in Informatics',
+      year: '05/2024',
+      prize: 'Bronze Medal',
+      description: 'Competed against 300+ top students from specialized high schools nationwide in a standard IOI-style format (2 days, 10 hours). Solved 6 advanced algorithmic problems to secure the Bronze Medal.',
+      icon: '🥉',
+    },
+    {
+      title: 'Third Prize - Exploration and Creativity Contest in Mathematics',
+      organization: 'VNU – Hanoi University of Science',
+      year: '2024',
+      prize: 'Third Prize',
+      description: 'Co-authored in an in-depth research project on "Inequalities in Triangles", investigating advanced geometric proofs and applications. Recognized for research quality, which resulted in a book publication by Vietnam National University Press.',
+      icon: '🥉',
+    },
+    {
+      title: 'First Prize - Tech for Green Challenge',
+      organization: 'Tech for Green Challenge',
+      year: '2025',
+      prize: 'First Prize',
+      description: 'Developed computational models to evaluate green technologies and optimize sustainability performance.',
+      icon: '🥇',
+    },
   ]
 
   return (
@@ -54,7 +84,7 @@ function Awards() {
             as="span"
             fontSize={{ base: 'md', md: 'lg' }}
             fontWeight={700}
-            color="purple.600"
+            color="indigo.600"
             textTransform="uppercase"
             letterSpacing="wide"
             px={6}
@@ -62,8 +92,10 @@ function Awards() {
             bg="white"
             borderRadius="full"
             boxShadow="md"
+            border="2px solid"
+            borderColor="indigo.100"
           >
-            Awards & Achievements
+            🏆 Awards & Achievements
           </Box>
           <Heading
             as="h2"
@@ -71,82 +103,113 @@ function Awards() {
             fontWeight={800}
             textAlign="center"
             lineHeight="shorter"
-            bgGradient="linear(135deg, #667eea 0%, #764ba2 100%)"
+            bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
             bgClip="text"
             letterSpacing="tight"
           >
             Awards & Achievements
           </Heading>
         </VStack>
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
-            {awards.map((award, index) => (
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
+            {awards.map((award, index) => {
+              const getPrizeColor = (prize: string) => {
+                if (prize.includes('First') || prize.includes('Gold')) {
+                  return { bg: 'yellow.50', color: 'yellow.700', border: 'yellow.200', badge: 'yellow.100' }
+                } else if (prize.includes('Second') || prize.includes('Silver')) {
+                  return { bg: 'gray.50', color: 'gray.700', border: 'gray.200', badge: 'gray.100' }
+                } else if (prize.includes('Third') || prize.includes('Bronze')) {
+                  return { bg: 'orange.50', color: 'orange.700', border: 'orange.200', badge: 'orange.100' }
+                }
+                return { bg: 'indigo.50', color: 'indigo.700', border: 'indigo.200', badge: 'indigo.100' }
+              }
+              const prizeColors = getPrizeColor(award.prize)
+              
+              return (
               <Box
                 key={index}
                 bg="white"
                 borderRadius="2xl"
-                p={8}
+                p={6}
                 boxShadow="0 4px 20px rgba(0, 0, 0, 0.08)"
-                border="1px solid"
+                border="2px solid"
                 borderColor="gray.100"
-                textAlign="center"
                 position="relative"
                 overflow="hidden"
                 _hover={{
                   transform: 'translateY(-8px)',
-                  boxShadow: '0 12px 40px rgba(102, 126, 234, 0.15)',
-                  borderColor: 'purple.200',
+                  boxShadow: '0 12px 40px rgba(99, 102, 241, 0.2)',
+                  borderColor: 'indigo.300',
                 }}
                 transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
               >
+                {/* Decorative gradient top border */}
                 <Box
-                  w="90px"
-                  h="90px"
-                  borderRadius="full"
-                  bg="white"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  mx="auto"
-                  mb={6}
-                  boxShadow="0 8px 24px rgba(102, 126, 234, 0.3)"
-                  border="3px solid"
-                  borderColor="purple.100"
-                  p={3}
-                  position="relative"
-                  overflow="hidden"
-                >
-                  <Image
-                    src={award.logo}
-                    alt={`${award.organization} logo`}
-                    w="100%"
-                    h="100%"
-                    objectFit="contain"
-                  />
-                </Box>
-                <Heading as="h3" fontSize="lg" mb={3} color="gray.900" fontWeight={700}>
-                  {award.title}
-                </Heading>
-                <Text fontSize="md" color="purple.700" fontWeight={600} mb={3}>
-                  {award.organization}
-                </Text>
-                <Badge
-                  bgGradient="linear(135deg, #667eea, #764ba2)"
-                  color="blue"
-                  backgroundColor="gray.100"
-                  mb={4}
-                  px={4}
-                  py={1.5}
-                  borderRadius="full"
-                  fontSize="xs"
-                  fontWeight={600}
-                >
-                  {award.year}
-                </Badge>
-                <Text color="gray.800" lineHeight="tall" fontSize="sm" fontWeight={500}>
-                  {award.description}
-                </Text>
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  right={0}
+                  h="4px"
+                  bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
+                />
+                
+                <VStack align="stretch" gap={4}>
+                  {/* Header with icon and prize badge */}
+                  <Flex align="flex-start" justify="space-between" gap={4}>
+                    <Box
+                      fontSize="4xl"
+                      lineHeight={1}
+                    >
+                      {award.icon}
+                    </Box>
+                    <Badge
+                      bg={prizeColors.badge}
+                      color={prizeColors.color}
+                      px={3}
+                      py={1}
+                      borderRadius="full"
+                      fontSize="xs"
+                      fontWeight={700}
+                      border="1px solid"
+                      borderColor={prizeColors.border}
+                    >
+                      {award.prize}
+                    </Badge>
+                  </Flex>
+                  
+                  {/* Title */}
+                  <Heading as="h3" fontSize="lg" color="gray.900" fontWeight={700} lineHeight="shorter">
+                    {award.title}
+                  </Heading>
+                  
+                  {/* Organization */}
+                  <Text fontSize="sm" color="indigo.700" fontWeight={600}>
+                    {award.organization}
+                  </Text>
+                  
+                  {/* Year badge */}
+                  <Badge
+                    bg="indigo.100"
+                    color="indigo.800"
+                    border="1px solid"
+                    borderColor="indigo.200"
+                    w="fit-content"
+                    px={3}
+                    py={1}
+                    borderRadius="full"
+                    fontSize="xs"
+                    fontWeight={600}
+                    boxShadow="0 2px 8px rgba(99, 102, 241, 0.2)"
+                  >
+                    {award.year}
+                  </Badge>
+                  
+                  {/* Description */}
+                  <Text color="gray.700" lineHeight="tall" fontSize="sm" fontWeight={400} pt={2}>
+                    {award.description}
+                  </Text>
+                </VStack>
               </Box>
-            ))}
+            )})}
           </SimpleGrid>
 
           {/* Scroll Arrow */}
@@ -155,8 +218,8 @@ function Awards() {
             bottom={8}
             left="50%"
             transform="translateX(-50%)"
-            color="purple.600"
-            _hover={{ color: 'purple.700', transform: 'translateX(-50%) translateY(4px)' }}
+            color="indigo.600"
+            _hover={{ color: 'indigo.700', transform: 'translateX(-50%) translateY(4px)' }}
             cursor="pointer"
             onClick={() => scrollToSection('projects')}
             transition="all 0.3s"

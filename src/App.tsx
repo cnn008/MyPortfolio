@@ -5,12 +5,11 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Education from "./components/Education";
-import Experience from "./components/Experience";
 import Awards from "./components/Awards";
 import Projects from "./components/Projects";
 import Gallery from "./components/Gallery";
-import Videos from "./components/Videos";
-import Skills from "./components/Skills";
+import ExtracurricularActivities from "./components/ExtracurricularActivities";
+import Hobbies from "./components/Hobbies";
 import Contact from "./components/Contact";
 
 function App() {
@@ -21,12 +20,11 @@ function App() {
       "home",
       "about",
       "education",
-      "experience",
       "awards",
       "projects",
       "gallery",
-      "videos",
-      "skills",
+      "extracurricular",
+      "hobbies",
       "contact",
     ];
 
@@ -69,12 +67,11 @@ function App() {
         <Hero />
         <About />
         <Education />
-        <Experience />
         <Awards />
         <Projects />
         <Gallery />
-        <Videos />
-        <Skills />
+        <ExtracurricularActivities />
+        <Hobbies />
         <Contact />
       </Box>
     </Box>

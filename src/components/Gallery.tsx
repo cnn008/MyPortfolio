@@ -87,7 +87,7 @@ function Gallery() {
             as="span"
             fontSize={{ base: 'md', md: 'lg' }}
             fontWeight={700}
-            color="purple.600"
+            color="indigo.600"
             textTransform="uppercase"
             letterSpacing="wide"
             px={6}
@@ -95,8 +95,10 @@ function Gallery() {
             bg="white"
             borderRadius="full"
             boxShadow="md"
+            border="2px solid"
+            borderColor="indigo.100"
           >
-            Learning Journey
+            📸 Learning Journey
           </Box>
           <Heading
             as="h2"
@@ -104,8 +106,7 @@ function Gallery() {
             fontWeight={800}
             textAlign="center"
             lineHeight="shorter"
-            bgGradient="linear(135deg, #667eea 0%, #764ba2 100%)"
-            bgClip="text"
+            color="gray.800"
             letterSpacing="tight"
           >
             Learning Journey
@@ -125,8 +126,8 @@ function Gallery() {
               borderColor="gray.100"
               _hover={{
                 transform: 'scale(1.03)',
-                boxShadow: '0 12px 40px rgba(102, 126, 234, 0.15)',
-                borderColor: 'purple.200',
+                boxShadow: '0 12px 40px rgba(99, 102, 241, 0.2)',
+                borderColor: 'indigo.300',
               }}
               transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
             >
@@ -182,10 +183,10 @@ function Gallery() {
         bottom={8}
         left="50%"
         transform="translateX(-50%)"
-        color="purple.600"
-        _hover={{ color: 'purple.700', transform: 'translateX(-50%) translateY(4px)' }}
+        color="indigo.600"
+        _hover={{ color: 'indigo.700', transform: 'translateX(-50%) translateY(4px)' }}
         cursor="pointer"
-        onClick={() => scrollToSection('videos')}
+        onClick={() => scrollToSection('extracurricular')}
         transition="all 0.3s"
         zIndex={2}
         display={{ base: 'none', md: 'block' }}

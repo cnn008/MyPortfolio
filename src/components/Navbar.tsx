@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, Container, Flex, Link, IconButton, useDisclosure, Drawer, VStack, Text, Image } from '@chakra-ui/react'
 import { HiMenu, HiX } from 'react-icons/hi'
-import profileImage from '../assets/profile.jpeg'
+import profileImage from '../assets/profile.png'
 
 interface NavbarProps {
   activeSection?: string
@@ -23,12 +23,11 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'education', label: 'Education' },
-    { id: 'experience', label: 'Experience' },
     { id: 'awards', label: 'Awards' },
     { id: 'projects', label: 'Projects' },
     { id: 'gallery', label: 'Gallery' },
-    { id: 'videos', label: 'Videos' },
-    { id: 'skills', label: 'Skills' },
+    { id: 'extracurricular', label: 'Extracurricular' },
+    { id: 'hobbies', label: 'Hobbies' },
     { id: 'contact', label: 'Contact' },
   ]
 
@@ -78,9 +77,9 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
               h={{ base: '40px', md: '48px' }}
               borderRadius="lg"
               overflow="hidden"
-              boxShadow="0 4px 12px rgba(102, 126, 234, 0.4)"
+              boxShadow="0 4px 12px rgba(99, 102, 241, 0.4)"
               border="2px solid"
-              borderColor="purple.200"
+              borderColor="indigo.200"
               bg="gray.100"
             >
               <Image
@@ -94,10 +93,11 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
             <Text
               fontSize={{ base: 'lg', md: 'xl' }}
               fontWeight={700}
-              color="gray.800"
+              bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
+              bgClip="text"
               display={{ base: 'none', sm: 'block' }}
             >
-              Greetings
+              Nham Hung
             </Text>
           </Link>
 
@@ -121,12 +121,12 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
                     borderRadius="lg"
                     fontSize="sm"
                     fontWeight={isActive ? 600 : 500}
-                    color={isActive ? '#667eea' : 'gray.700'}
-                    bg={isActive ? 'purple.50' : 'transparent'}
+                    color={isActive ? '#6366f1' : 'gray.700'}
+                    bg={isActive ? 'indigo.50' : 'transparent'}
                     position="relative"
                     _hover={{
-                      color: '#667eea',
-                      bg: 'purple.50',
+                      color: '#6366f1',
+                      bg: 'indigo.50',
                       transform: 'translateY(-1px)',
                     }}
                     transition="all 0.2s ease"
@@ -162,8 +162,8 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
             size="lg"
             borderRadius="lg"
             _hover={{
-              bg: 'purple.50',
-              color: '#667eea',
+              bg: 'indigo.50',
+              color: '#6366f1',
             }}
             transition="all 0.2s"
             backgroundColor="gray.100"
@@ -181,8 +181,8 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
             <Drawer.Header
               borderBottom="1px solid"
               borderColor="gray.200"
-              bgGradient="linear(135deg, #667eea 0%, #764ba2 100%)"
-              color="blue.600"
+              bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
+              color="white"
               py={6}
             >
               <Flex justify="space-between" align="center">
@@ -214,18 +214,18 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
                       px={4}
                       py={3}
                       borderRadius="lg"
-                      color={isActive ? '#667eea' : 'gray.700'}
-                      fontWeight={isActive ? 600 : 500}
-                      fontSize="md"
-                      bg={isActive ? 'purple.50' : 'transparent'}
-                      transition="all 0.2s"
-                      _hover={{
-                        color: '#667eea',
-                        bg: 'purple.50',
-                        pl: isActive ? 4 : 5,
-                        borderLeft: '3px solid',
-                        borderColor: '#667eea',
-                      }}
+                  color={isActive ? '#6366f1' : 'gray.700'}
+                  fontWeight={isActive ? 600 : 500}
+                  fontSize="md"
+                  bg={isActive ? 'indigo.50' : 'transparent'}
+                  transition="all 0.2s"
+                  _hover={{
+                    color: '#6366f1',
+                    bg: 'indigo.50',
+                    pl: isActive ? 4 : 5,
+                    borderLeft: '3px solid',
+                    borderColor: '#6366f1',
+                  }}
                     >
                       <Flex align="center" gap={2}>
                         {isActive && (
@@ -233,8 +233,8 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
                             w="8px"
                             h="8px"
                             borderRadius="full"
-                            bg="#667eea"
-                            boxShadow="0 0 8px rgba(102, 126, 234, 0.6)"
+                            bg="#6366f1"
+                            boxShadow="0 0 8px rgba(99, 102, 241, 0.6)"
                             flexShrink={0}
                           />
                         )}

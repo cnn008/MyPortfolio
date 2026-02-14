@@ -1,11 +1,52 @@
 import { Box, Heading, Text, VStack, SimpleGrid } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
+import { FaCode, FaGraduationCap, FaTrophy, FaUsers, FaLightbulb, FaHandsHelping } from 'react-icons/fa'
 
 function About() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) element.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const journey = [
+    {
+      icon: <FaCode />,
+      title: 'Competitive Programming',
+      description: 'Won First Prize in VNU Olympiad, solving complex algorithmic challenges with precision and creativity',
+      color: 'indigo',
+    },
+    {
+      icon: <FaGraduationCap />,
+      title: 'Academic Excellence',
+      description: 'Maintained consistent 9+/10 GPA across all High School academic years, including Informatics, Mathematics, and Physics',
+      color: 'purple',
+    },
+    {
+      icon: <FaLightbulb />,
+      title: 'AI Innovation',
+      description: 'Built Computer Vision systems with high accuracy, from travel planning to traffic detection',
+      color: 'pink',
+    },
+    {
+      icon: <FaUsers />,
+      title: 'Teaching & Mentoring',
+      description: 'Led Code Camp, teaching C++ fundamentals, and helping students achieve their goals',
+      color: 'blue',
+    },
+    {
+      icon: <FaTrophy />,
+      title: 'Achievements',
+      description: 'Secured multiple competition wins, top 1% chess player, and recognition for research contributions',
+      color: 'cyan',
+    },
+    {
+      icon: <FaHandsHelping />,
+      title: 'Volunteering',
+      description: 'Fundraised and supported the construction of primary and secondary schools to provide education opportunities for local children from disadvantaged backgrounds',
+      color: 'green',
+    }
+  ]
+
   return (
     <Box
       id="about"
@@ -25,43 +66,45 @@ function About() {
         position="absolute"
         top="-10%"
         right="-5%"
-        w="400px"
-        h="400px"
+        w="500px"
+        h="500px"
         borderRadius="full"
-        bg="purple.50"
-        opacity={0.3}
-        filter="blur(60px)"
+        bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 100%)"
+        opacity={0.05}
+        filter="blur(80px)"
       />
       <Box
         position="absolute"
         bottom="-10%"
         left="-5%"
-        w="500px"
-        h="500px"
+        w="600px"
+        h="600px"
         borderRadius="full"
-        bg="blue.50"
-        opacity={0.3}
-        filter="blur(60px)"
+        bgGradient="linear(135deg, #ec4899 0%, #f472b6 100%)"
+        opacity={0.05}
+        filter="blur(80px)"
       />
 
-      <Box w="100%" px={{ base: 4, md: 8, lg: 12 }} position="relative" zIndex={1}>
-        <VStack align="stretch" gap={6}>
+      <Box w="100%" px={{ base: 4, md: 8, lg: 12 }} position="relative" zIndex={1} maxW="1200px" mx="auto">
+        <VStack align="stretch" gap={8}>
           {/* Header Section */}
-          <VStack gap={3} mb={2}>
+          <VStack gap={4} mb={4}>
             <Box
               as="span"
               fontSize={{ base: 'md', md: 'lg' }}
               fontWeight={700}
-              color="purple.600"
+              color="indigo.600"
               textTransform="uppercase"
               letterSpacing="wide"
               px={6}
               py={3}
-              bg="white"
+              bg="indigo.50"
               borderRadius="full"
               boxShadow="md"
+              border="2px solid"
+              borderColor="indigo.100"
             >
-              About Me
+              ✨ My Story
             </Box>
             <Heading
               as="h2"
@@ -69,202 +112,140 @@ function About() {
               fontWeight={800}
               textAlign="center"
               lineHeight="shorter"
-              bgGradient="linear(135deg, #667eea 0%, #764ba2 100%)"
+              bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
               bgClip="text"
               letterSpacing="tight"
             >
-              About Me
+              Beyond the Code
             </Heading>
+            <Text
+              fontSize={{ base: 'lg', md: 'xl' }}
+              color="gray.600"
+              maxW="800px"
+              mx="auto"
+              textAlign="center"
+              lineHeight="tall"
+            >
+              A journey of continuous learning, innovation, and making an impact through technology and education
+            </Text>
           </VStack>
 
-          {/* Content Section */}
+          {/* Main Story Card */}
           <Box
-            w="100%"
+            bgGradient="linear(135deg, #f8fafc 0%, #f1f5f9 100%)"
+            p={{ base: 8, md: 12 }}
+            borderRadius="3xl"
+            boxShadow="xl"
+            border="2px solid"
+            borderColor="indigo.100"
+            position="relative"
+            overflow="hidden"
+            _hover={{
+              boxShadow: '2xl',
+              borderColor: 'indigo.300',
+            }}
+            transition="all 0.3s"
           >
-            <VStack gap={4} align="stretch">
-              <Box
-                bg="white"
-                p={{ base: 6, md: 8 }}
-                borderRadius="2xl"
-                boxShadow="xl"
-                border="1px solid"
-                borderColor="blue.100"
-                _hover={{
-                  boxShadow: '2xl',
-                  transform: 'translateY(-2px)',
-                }}
-                transition="all 0.3s"
-              >
+            {/* Decorative gradient top border */}
+            <Box
+              position="absolute"
+              top={0}
+              left={0}
+              right={0}
+              h="6px"
+              bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
+            />
+            
+            <VStack align="stretch" gap={6}>
               <Text
-                fontSize={{ base: 'lg', md: 'xl' }}
+                fontSize={{ base: 'lg', md: 'xl', lg: '2xl' }}
                 color="gray.800"
                 lineHeight="tall"
-                textAlign="center"
                 fontWeight={500}
+                textAlign="center"
               >
-                I'm a passionate <Text as="span" fontWeight={700} color="purple.600">Data Engineer</Text> with a love for building reliable and efficient data pipelines. With a deep expertise in <Text as="span" fontWeight={700} color="blue.600">Big Data and Analytics</Text>, I enjoy transforming raw data into actionable insights, hence enabling organizations to make data-driven decisions.
+                I'm a <Text as="span" fontWeight={700} color="indigo.600">Mathematics student</Text> at HUS High School for Gifted Students, 
+                diving deep into <Text as="span" fontWeight={700} color="purple.600">Informatics</Text>, 
+                <Text as="span" fontWeight={700} color="pink.600"> Mathematics</Text>, and 
+                <Text as="span" fontWeight={700} color="cyan.600"> Machine Learning Applications</Text>. 
+                My journey combines academic rigor with hands-on experience in building scalable systems and 
+                exploring cutting-edge AI technologies.
               </Text>
-              </Box>
-
-              <Box
-                bg="white"
-                p={{ base: 6, md: 8 }}
-                borderRadius="2xl"
-                boxShadow="xl"
-                border="1px solid"
-                borderColor="purple.100"
-                _hover={{
-                  boxShadow: '2xl',
-                  transform: 'translateY(-2px)',
-                }}
-                transition="all 0.3s"
-              >
+              
               <Text
-                fontSize={{ base: 'lg', md: 'xl' }}
-                color="gray.800"
+                fontSize={{ base: 'md', md: 'lg' }}
+                color="gray.700"
                 lineHeight="tall"
+                fontWeight={400}
                 textAlign="center"
-                fontWeight={500}
               >
-                When I'm not coding, you can find me doing <Text as="span" fontWeight={700} color="cyan.600">3 things simultaneously</Text>: pursuing higher studies, exploring new technologies and mentoring students on all things education-related and in various formats.
+                Beyond academics, I'm passionate about <Text as="span" fontWeight={600} color="indigo.600">tourism</Text> and <Text as="span" fontWeight={600} color="indigo.600">protecting the environment.</Text> When I'm not coding or studying, you'll also find me 
+                strategizing on the <Text as="span" fontWeight={600} color="indigo.600">chessboard</Text> or competing in <Text as="span" fontWeight={600} color="indigo.600">table tennis</Text> tournaments.
               </Text>
-              </Box>
             </VStack>
           </Box>
 
-          {/* Statistics Cards */}
-          <SimpleGrid 
-            columns={{ base: 1, md: 3 }} 
-            gap={{ base: 6, md: 8 }} 
-            mt={8}
-            w="100%"
-          >
-            <Box
-              bg="white"
-              p={{ base: 8, md: 10 }}
-              borderRadius="2xl"
-              boxShadow="xl"
+          {/* Journey Cards */}
+          <Box>
+            <Heading
+              as="h3"
+              fontSize={{ base: '2xl', md: '3xl' }}
+              fontWeight={700}
+              color="gray.800"
+              mb={6}
               textAlign="center"
-              border="2px solid"
-              borderColor="purple.200"
-              position="relative"
-              overflow="hidden"
-              _hover={{
-                transform: 'translateY(-8px) scale(1.02)',
-                boxShadow: '2xl',
-                borderColor: 'purple.400',
-              }}
-              transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
             >
-              <Box
-                position="absolute"
-                top={0}
-                left={0}
-                right={0}
-                h="4px"
-                bgGradient="linear(90deg, #667eea 0%, #764ba2 100%)"
-              />
-              <Heading
-                as="h3"
-                fontSize={{ base: '5xl', md: '6xl' }}
-                fontWeight={800}
-                color="purple.600"
-                mb={5}
-              >
-                4+
-              </Heading>
-              <Text fontSize="lg" fontWeight={600} color="gray.800" mb={1}>
-                Years of Professional Data
-              </Text>
-              <Text fontSize="lg" fontWeight={600} color="gray.800">
-                and Software Engineering
-              </Text>
-            </Box>
-
-            <Box
-              bg="white"
-              p={{ base: 8, md: 10 }}
-              borderRadius="2xl"
-              boxShadow="xl"
-              textAlign="center"
-              border="2px solid"
-              borderColor="blue.200"
-              position="relative"
-              overflow="hidden"
-              _hover={{
-                transform: 'translateY(-8px) scale(1.02)',
-                boxShadow: '2xl',
-                borderColor: 'blue.400',
-              }}
-              transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-            >
-              <Box
-                position="absolute"
-                top={0}
-                left={0}
-                right={0}
-                h="4px"
-                bgGradient="linear(90deg, #2196F3 0%, #00BCD4 100%)"
-              />
-              <Heading
-                as="h3"
-                fontSize={{ base: '5xl', md: '6xl' }}
-                fontWeight={800}
-                color="blue.600"
-                mb={5}
-              >
-                5+
-              </Heading>
-              <Text fontSize="lg" fontWeight={600} color="gray.800" mb={1}>
-                Years of Teaching and
-              </Text>
-              <Text fontSize="lg" fontWeight={600} color="gray.800">
-                Mentoring
-              </Text>
-            </Box>
-
-            <Box
-              bg="white"
-              p={{ base: 8, md: 10 }}
-              borderRadius="2xl"
-              boxShadow="xl"
-              textAlign="center"
-              border="2px solid"
-              borderColor="cyan.200"
-              position="relative"
-              overflow="hidden"
-              _hover={{
-                transform: 'translateY(-8px) scale(1.02)',
-                boxShadow: '2xl',
-                borderColor: 'cyan.400',
-              }}
-              transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-            >
-              <Box
-                position="absolute"
-                top={0}
-                left={0}
-                right={0}
-                h="4px"
-                bgGradient="linear(90deg, #00BCD4 0%, #009688 100%)"
-              />
-              <Heading
-                as="h3"
-                fontSize={{ base: '5xl', md: '6xl' }}
-                fontWeight={800}
-                color="cyan.600"
-                mb={5}
-              >
-                3+
-              </Heading>
-              <Text fontSize="lg" fontWeight={600} color="gray.800" mb={1}>
-                Years of Creating and Sharing
-              </Text>
-              <Text fontSize="lg" fontWeight={600} color="gray.800">
-                Educational Content
-              </Text>
-            </Box>
-          </SimpleGrid>
+              My Journey
+            </Heading>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
+              {journey.map((item, index) => (
+                <Box
+                  key={index}
+                  bg="white"
+                  p={6}
+                  borderRadius="2xl"
+                  boxShadow="lg"
+                  border="2px solid"
+                  borderColor="gray.100"
+                  position="relative"
+                  overflow="hidden"
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'xl',
+                    borderColor: `${item.color}.300`,
+                  }}
+                  transition="all 0.3s"
+                >
+                  {/* Icon */}
+                  <Box
+                    fontSize="3xl"
+                    color={`${item.color}.600`}
+                    mb={4}
+                  >
+                    {item.icon}
+                  </Box>
+                  
+                  <Heading
+                    as="h4"
+                    fontSize="lg"
+                    fontWeight={700}
+                    color="gray.900"
+                    mb={2}
+                  >
+                    {item.title}
+                  </Heading>
+                  
+                  <Text
+                    fontSize="sm"
+                    color="gray.600"
+                    lineHeight="tall"
+                  >
+                    {item.description}
+                  </Text>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
         </VStack>
       </Box>
 
@@ -274,8 +255,8 @@ function About() {
         bottom={8}
         left="50%"
         transform="translateX(-50%)"
-        color="purple.600"
-        _hover={{ color: 'purple.700', transform: 'translateX(-50%) translateY(4px)' }}
+        color="indigo.600"
+        _hover={{ color: 'indigo.700', transform: 'translateX(-50%) translateY(4px)' }}
         cursor="pointer"
         onClick={() => scrollToSection('education')}
         transition="all 0.3s"
@@ -289,4 +270,3 @@ function About() {
 }
 
 export default About
-

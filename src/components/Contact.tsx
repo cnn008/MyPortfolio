@@ -49,7 +49,7 @@ function Contact() {
         w="400px"
         h="400px"
         borderRadius="full"
-        bg="purple.50"
+        bg="indigo.50"
         opacity={0.3}
         filter="blur(60px)"
       />
@@ -73,7 +73,7 @@ function Contact() {
               as="span"
               fontSize={{ base: 'md', md: 'lg' }}
               fontWeight={700}
-              color="purple.600"
+              color="indigo.600"
               textTransform="uppercase"
               letterSpacing="wide"
               px={6}
@@ -81,8 +81,10 @@ function Contact() {
               bg="gray.50"
               borderRadius="full"
               boxShadow="md"
+              border="2px solid"
+              borderColor="indigo.100"
             >
-              Get In Touch
+              📧 Get In Touch
             </Box>
             <Heading
               as="h2"
@@ -90,8 +92,7 @@ function Contact() {
               fontWeight={800}
               textAlign="center"
               lineHeight="shorter"
-              bgGradient="linear(135deg, #667eea 0%, #764ba2 100%)"
-              bgClip="text"
+              color="gray.800"
               letterSpacing="tight"
             >
               Contact Me
@@ -105,7 +106,7 @@ function Contact() {
               lineHeight="tall"
               fontWeight={500}
             >
-              I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and data engineering.
+              Always open to discussing academic collaborations, research opportunities, interesting projects, or just chatting about technology and data engineering!
             </Text>
           </VStack>
 
@@ -115,14 +116,25 @@ function Contact() {
             p={{ base: 8, md: 12 }}
             borderRadius="2xl"
             boxShadow="xl"
-            border="1px solid"
-            borderColor="purple.100"
+            border="2px solid"
+            borderColor="indigo.100"
             maxW="800px"
             mx="auto"
             w="100%"
+            position="relative"
+            overflow="hidden"
             _hover={{
               boxShadow: '2xl',
-              borderColor: 'purple.200',
+              borderColor: 'indigo.300',
+            }}
+            _before={{
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              h: '4px',
+              bgGradient: 'linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
             }}
             transition="all 0.3s"
           >
@@ -148,11 +160,11 @@ function Contact() {
                       bg="gray.50"
                       borderColor="gray.200"
                       _hover={{
-                        borderColor: 'purple.300',
+                        borderColor: 'indigo.300',
                       }}
                       _focus={{
-                        borderColor: 'purple.500',
-                        boxShadow: '0 0 0 1px #667eea',
+                        borderColor: 'indigo.500',
+                        boxShadow: '0 0 0 1px #6366f1',
                       }}
                     />
                   </Box>
@@ -175,11 +187,11 @@ function Contact() {
                       bg="gray.50"
                       borderColor="gray.200"
                       _hover={{
-                        borderColor: 'purple.300',
+                        borderColor: 'indigo.300',
                       }}
                       _focus={{
-                        borderColor: 'purple.500',
-                        boxShadow: '0 0 0 1px #667eea',
+                        borderColor: 'indigo.500',
+                        boxShadow: '0 0 0 1px #6366f1',
                       }}
                     />
                   </Box>
@@ -203,11 +215,11 @@ function Contact() {
                     bg="gray.50"
                     borderColor="gray.200"
                     _hover={{
-                      borderColor: 'purple.300',
+                      borderColor: 'indigo.300',
                     }}
                     _focus={{
-                      borderColor: 'purple.500',
-                      boxShadow: '0 0 0 1px #667eea',
+                      borderColor: 'indigo.500',
+                      boxShadow: '0 0 0 1px #6366f1',
                     }}
                   />
                 </Box>
@@ -246,10 +258,9 @@ function Contact() {
                 <Button
                   type="submit"
                   size={{ base: 'md', md: 'lg' }}
-                  bgGradient="linear(135deg, #667eea 0%, #764ba2 100%)"
-                  color="blue.600"
-                  fontWeight={600}
-                  backgroundColor="gray.100"
+                  bg="indigo.600"
+                  color="gray.800"
+                  fontWeight={700}
                   px={8}
                   py={6}
                   fontSize={{ base: 'md', md: 'lg' }}
@@ -257,7 +268,7 @@ function Contact() {
                   _hover={{
                     transform: 'translateY(-2px)',
                     boxShadow: 'xl',
-                    opacity: 0.9,
+                    bgGradient: 'linear(135deg, #8b5cf6 0%, #ec4899 100%)',
                   }}
                   transition="all 0.3s"
                 >

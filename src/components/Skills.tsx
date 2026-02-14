@@ -162,7 +162,7 @@ function Skills() {
           color="purple.600"
           _hover={{ color: 'purple.700', transform: 'translateX(-50%) translateY(4px)' }}
           cursor="pointer"
-          onClick={() => scrollToSection('contact')}
+          onClick={() => scrollToSection('hobbies')}
           transition="all 0.3s"
           zIndex={2}
           display={{ base: 'none', md: 'block' }}
