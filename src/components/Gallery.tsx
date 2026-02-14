@@ -7,11 +7,12 @@ import {
   VStack,
   Button,
   HStack,
+  Flex,
   useDisclosure,
   Dialog,
   Badge,
 } from '@chakra-ui/react'
-import { HiArrowDown } from 'react-icons/hi'
+import { HiArrowDown, HiX } from 'react-icons/hi'
 import { FiExternalLink, FiFileText } from 'react-icons/fi'
 
 // Load all PDFs from the two asset folders (eager URLs for build)
@@ -339,21 +340,41 @@ function Gallery() {
       <Dialog.Root open={open} onOpenChange={(e) => !e.open && (onClose(), setSelectedPdf(null))}>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content maxW="95vw" w="960px" h="90vh" display="flex" flexDirection="column">
-            <Dialog.CloseTrigger
+          <Dialog.Content maxW="95vw" w="960px" h="90vh" display="flex" flexDirection="column" position="relative">
+            {/* Visible header bar with close button - always on top of PDF */}
+            <Flex
               position="absolute"
-              top={3}
-              right={3}
-              zIndex={10}
-              color="gray.800"
-              bg="white"
-              border="1px solid"
-              borderColor="gray.200"
-              _hover={{ bg: 'gray.100', color: 'indigo.600', borderColor: 'indigo.300' }}
-            />
+              top={0}
+              left={0}
+              right={0}
+              zIndex={20}
+              justify="flex-end"
+              align="center"
+              px={4}
+              py={3}
+              bg="gray.800"
+              borderBottom="1px solid"
+              borderColor="gray.600"
+              borderRadius="xl xl 0 0"
+            >
+              <Button
+                onClick={() => { onClose(); setSelectedPdf(null) }}
+                size="md"
+                bg="white"
+                color="gray.800"
+                fontWeight={700}
+                px={5}
+                _hover={{ bg: 'gray.100', color: 'indigo.600' }}
+              >
+                <HStack gap={2}>
+                  <HiX size={20} />
+                  <Text>Close</Text>
+                </HStack>
+              </Button>
+            </Flex>
             {selectedPdf && (
               <>
-                <Box flex="1" minH="0" display="flex" flexDirection="column" p={4} pt={12} gap={3}>
+                <Box flex="1" minH="0" display="flex" flexDirection="column" p={4} pt={16} gap={3}>
                   <Box
                     flex="1"
                     minH="400px"
