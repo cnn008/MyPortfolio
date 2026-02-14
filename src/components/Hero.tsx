@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import { Box, Container, Heading, Text, Button, Flex, VStack, Link, Image, HStack, Badge } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { HiDownload } from 'react-icons/hi'
 import profileImage from '../assets/profile.png'
+import resumePdf from '../assets/resume.pdf?url'
 
 function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -93,7 +95,7 @@ function Hero() {
           key={i}
           position="absolute"
           fontSize={{ base: '2xl', md: '4xl' }}
-          color="white"
+          color="gray.800"
           opacity={0.1}
           fontWeight={800}
           top={`${15 + i * 20}%`}
@@ -160,7 +162,7 @@ function Hero() {
               }}
             >
               <HStack gap={2}>
-                <Text fontSize="sm" color="white" fontWeight={600}>
+                <Text fontSize="sm" color="gray.800" fontWeight={600}>
                   👋 Welcome to my world
                 </Text>
               </HStack>
@@ -172,7 +174,7 @@ function Hero() {
                 as="h1"
                 fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
                 fontWeight={900}
-                color="white"
+                color="gray.800"
                 mb={4}
                 lineHeight="shorter"
                 textShadow="0 4px 20px rgba(0, 0, 0, 0.3)"
@@ -191,7 +193,7 @@ function Hero() {
                   minH="1.2em"
                 >
                   {displayText}
-                  <Box as="span" color="white" css={{ animation: 'blink 1s infinite' }}>
+                  <Box as="span" color="gray.800" css={{ animation: 'blink 1s infinite' }}>
                     |
                   </Box>
                 </Heading>
@@ -216,7 +218,7 @@ function Hero() {
                   bg="rgba(255, 255, 255, 0.15)"
                   backdropFilter="blur(10px)"
                   border="1px solid rgba(255, 255, 255, 0.2)"
-                  color="white"
+                  color="gray.800"
                   fontSize="sm"
                   fontWeight={600}
                   _hover={{
@@ -233,7 +235,7 @@ function Hero() {
             {/* Description */}
             <Text
               fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}
-              color="white"
+              color="gray.800"
               maxW="700px"
               lineHeight="tall"
               opacity={0.95}
@@ -261,7 +263,7 @@ function Hero() {
                 <Text fontSize="2xl" fontWeight={800} color="yellow.300">
                   1st Place
                 </Text>
-                <Text fontSize="xs" color="white" opacity={0.9}>
+                <Text fontSize="xs" color="gray.800" opacity={0.9}>
                   VNU Olympiad
                 </Text>
               </VStack>
@@ -269,7 +271,7 @@ function Hero() {
                 <Text fontSize="2xl" fontWeight={800} color="cyan.300">
                   First Prize
                 </Text>
-                <Text fontSize="xs" color="white" opacity={0.9}>
+                <Text fontSize="xs" color="gray.800" opacity={0.9}>
                   Tech for Green Challenge 2025
                 </Text>
               </VStack>
@@ -277,7 +279,7 @@ function Hero() {
                 <Text fontSize="2xl" fontWeight={800} color="pink.300">
                   Top 1% Worldwide
                 </Text>
-                <Text fontSize="xs" color="white" opacity={0.9}>
+                <Text fontSize="xs" color="gray.800" opacity={0.9}>
                   Chess.com
                 </Text>
               </VStack>
@@ -295,7 +297,7 @@ function Hero() {
               <Button
                 onClick={() => scrollToSection('projects')}
                 size={{ base: 'md', md: 'lg' }}
-                bg="white"
+                bg="gray.800"
                 color="indigo.700"
                 fontWeight={700}
                 px={8}
@@ -304,6 +306,7 @@ function Hero() {
                   transform: 'translateY(-4px) scale(1.05)',
                   boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4)',
                   bg: 'gray.50',
+                  color: "gray.800"
                 }}
                 transition="all 0.3s"
               >
@@ -315,7 +318,7 @@ function Hero() {
                 variant="outline"
                 borderColor="white"
                 borderWidth="2px"
-                color="white"
+                color="gray.800"
                 fontWeight={700}
                 px={8}
                 bg="rgba(255, 255, 255, 0.1)"
@@ -329,6 +332,28 @@ function Hero() {
               >
                 Let's Connect
               </Button>
+              <Link href={resumePdf} download="resume.pdf" _hover={{ textDecoration: 'none' }}>
+                <Button
+                  as="span"
+                  size={{ base: 'md', md: 'lg' }}
+                  bg="white"
+                  color="gray.800"
+                  fontWeight={700}
+                  px={8}
+                  boxShadow="0 8px 30px rgba(0, 0, 0, 0.2)"
+                  _hover={{
+                    transform: 'translateY(-4px) scale(1.05)',
+                    boxShadow: '0 12px 40px rgba(181, 171, 171, 0.3)',
+                    bg: 'gray.50',
+                  }}
+                  transition="all 0.3s"
+                >
+                  <HStack gap={2}>
+                    <HiDownload />
+                    <Text>Download Resume</Text>
+                  </HStack>
+                </Button>
+              </Link>
             </Flex>
 
             {/* Social Links */}
@@ -340,10 +365,10 @@ function Hero() {
               }}
             >
               <Link
-                href="https://github.com/nhamhung"
+                href="https://github.com/cnn008"
                 target="_blank"
                 rel="noopener noreferrer"
-                color="white"
+                color="gray.800"
                 _hover={{
                   color: 'white',
                   transform: 'translateY(-4px) scale(1.2)',
@@ -359,7 +384,7 @@ function Hero() {
                 href="https://www.linkedin.com/in/quoc-hung-nham/"
                 target="_blank"
                 rel="noopener noreferrer"
-                color="white"
+                color="gray.800"
                 _hover={{
                   color: 'white',
                   transform: 'translateY(-4px) scale(1.2)',
@@ -372,8 +397,8 @@ function Hero() {
                 <FaLinkedin size={28} />
               </Link>
               <Link
-                href="mailto:nhamhung.gttn@gmail.com"
-                color="white"
+                href="mailto:chuongnguyenng@gmail.com"
+                color="gray.800"
                 _hover={{
                   color: 'white',
                   transform: 'translateY(-4px) scale(1.2)',
@@ -394,6 +419,7 @@ function Hero() {
             display={{ base: 'none', lg: 'flex' }}
             justifyContent="center"
             alignItems="center"
+            pr={{ lg: 16, xl: 24 }}
             css={{
               animation: 'fadeInRight 1s ease-out 0.4s both',
             }}
@@ -453,7 +479,7 @@ function Hero() {
         bottom={8}
         left="50%"
         transform="translateX(-50%)"
-        color="white"
+        color="gray.800"
         cursor="pointer"
         onClick={() => scrollToSection('education')}
         transition="all 0.3s"

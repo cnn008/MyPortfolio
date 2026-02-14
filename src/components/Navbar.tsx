@@ -25,7 +25,7 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
     { id: 'education', label: 'Education' },
     { id: 'awards', label: 'Awards' },
     { id: 'projects', label: 'Projects' },
-    { id: 'gallery', label: 'Gallery' },
+    { id: 'gallery', label: 'Certificates' },
     { id: 'extracurricular', label: 'Extracurricular' },
     { id: 'hobbies', label: 'Hobbies' },
     { id: 'contact', label: 'Contact' },
@@ -48,39 +48,37 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
       right={0}
       bg="white"
       backdropFilter="blur(12px)"
-      boxShadow="0 4px 20px rgba(0, 0, 0, 0.12)"
+      bgColor="rgba(255, 255, 255, 0.92)"
       zIndex={1000}
-      transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-      borderBottom="2px solid"
+      transition="all 0.3s ease"
+      borderBottom="1px solid"
       borderColor="gray.200"
       w="100%"
     >
-      <Container maxW="1280px" px={{ base: 6, md: 8 }} w="100%">
+      <Container maxW="1280px" px={{ base: 4, md: 6 }} w="100%">
         <Flex
           as="nav"
           justify="space-between"
           align="center"
-          h={{ base: '64px', md: '72px' }}
+          h={{ base: '56px', md: '64px' }}
         >
-          {/* Logo - Enhanced */}
+          {/* Logo - compact */}
           <Link
             href="#home"
             onClick={(e) => { e.preventDefault(); scrollToSection('home') }}
             display="flex"
             alignItems="center"
             gap={2}
-            _hover={{ transform: 'scale(1.05)' }}
-            transition="transform 0.2s"
+            _hover={{ opacity: 0.85 }}
+            transition="opacity 0.2s"
           >
             <Box
-              w={{ base: '40px', md: '48px' }}
-              h={{ base: '40px', md: '48px' }}
-              borderRadius="lg"
+              w={{ base: '36px', md: '40px' }}
+              h={{ base: '36px', md: '40px' }}
+              borderRadius="full"
               overflow="hidden"
-              boxShadow="0 4px 12px rgba(99, 102, 241, 0.4)"
-              border="2px solid"
-              borderColor="indigo.200"
-              bg="gray.100"
+              border="1px solid"
+              borderColor="gray.200"
             >
               <Image
                 src={profileImage}
@@ -91,23 +89,26 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
               />
             </Box>
             <Text
-              fontSize={{ base: 'lg', md: 'xl' }}
+              fontSize={{ base: 'md', md: 'lg' }}
               fontWeight={700}
-              bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
-              bgClip="text"
+              color="gray.800"
               display={{ base: 'none', sm: 'block' }}
             >
-              Nham Hung
+              Nguyen Chuong
             </Text>
           </Link>
 
-          {/* Desktop Navigation - Enhanced */}
+          {/* Desktop: centered nav with underline active state */}
           <Flex
             as="ul"
             listStyleType="none"
-            gap={2}
+            gap={1}
             align="center"
             display={{ base: 'none', md: 'flex' }}
+            position="absolute"
+            left="50%"
+            top="50%"
+            transform="translate(-50%, -50%)"
           >
             {navItems.map((item) => {
               const isActive = activeSection === item.id
@@ -116,77 +117,53 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
                   <Link
                     href={`#${item.id}`}
                     onClick={(e) => { e.preventDefault(); scrollToSection(item.id) }}
-                    px={4}
+                    px={3}
                     py={2}
-                    borderRadius="lg"
                     fontSize="sm"
-                    fontWeight={isActive ? 600 : 500}
-                    color={isActive ? '#6366f1' : 'gray.700'}
-                    bg={isActive ? 'indigo.50' : 'transparent'}
-                    position="relative"
+                    fontWeight={500}
+                    color={isActive ? 'indigo.600' : 'gray.600'}
+                    borderBottom="2px solid"
+                    borderColor={isActive ? 'indigo.500' : 'transparent'}
                     _hover={{
-                      color: '#6366f1',
-                      bg: 'indigo.50',
-                      transform: 'translateY(-1px)',
+                      color: 'indigo.600',
+                      borderColor: 'indigo.200',
                     }}
                     transition="all 0.2s ease"
-                    className="relative"
                   >
                     {item.label}
-                    {isActive && (
-                      <Box
-                        position="absolute"
-                        bottom={0}
-                        left="50%"
-                        transform="translateX(-50%)"
-                        w="6px"
-                        h="6px"
-                        borderRadius="full"
-                        bg="#667eea"
-                        boxShadow="0 0 8px rgba(102, 126, 234, 0.6)"
-                      />
-                    )}
                   </Link>
                 </Box>
               )
             })}
           </Flex>
 
-          {/* Mobile Menu Button - Enhanced */}
+          {/* Desktop: right spacer for balance (or CTA) */}
+          <Box w={{ base: 0, md: '120px' }} flexShrink={0} />
+
+          {/* Mobile Menu Button */}
           <IconButton
             aria-label="Toggle menu"
             display={{ base: 'flex', md: 'none' }}
             variant="ghost"
             onClick={open ? onClose : onOpen}
             color="gray.700"
-            size="lg"
-            borderRadius="lg"
-            _hover={{
-              bg: 'indigo.50',
-              color: '#6366f1',
-            }}
-            transition="all 0.2s"
-            backgroundColor="gray.100"
+            size="md"
+            borderRadius="md"
+            _hover={{ bg: 'gray.100', color: 'gray.900' }}
           >
-            {open ? <HiX size={24} /> : <HiMenu size={24} />}
+            {open ? <HiX size={22} /> : <HiMenu size={22} />}
           </IconButton>
         </Flex>
       </Container>
 
-      {/* Mobile Drawer - Enhanced */}
+      {/* Mobile Drawer - simple list format */}
       <Drawer.Root open={open} onOpenChange={(e) => !e.open && onClose()} placement="end">
-        <Drawer.Backdrop bg="rgba(0, 0, 0, 0.4)" />
+        <Drawer.Backdrop bg="rgba(0, 0, 0, 0.3)" />
         <Drawer.Positioner>
-          <Drawer.Content maxW="320px" bg="white">
-            <Drawer.Header
-              borderBottom="1px solid"
-              borderColor="gray.200"
-              bgGradient="linear(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)"
-              color="white"
-              py={6}
-            >
+          <Drawer.Content maxW="280px" bg="white">
+            <Drawer.Header borderBottom="1px solid" borderColor="gray.100" py={4} px={4}>
               <Flex justify="space-between" align="center">
-                <Text fontSize="xl" fontWeight={700} mr={1}>
+                <Text fontSize="sm" fontWeight={600} color="gray.500" textTransform="uppercase" letterSpacing="wider">
                   Menu
                 </Text>
                 <IconButton
@@ -194,16 +171,15 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
                   variant="ghost"
                   onClick={onClose}
                   size="sm"
-                  color="blue.600"
-                  _hover={{ bg: 'rgba(255, 255, 255, 0.2)' }}
-                  backgroundColor="gray.100"
+                  color="gray.600"
+                  _hover={{ bg: 'gray.100' }}
                 >
                   <HiX />
                 </IconButton>
               </Flex>
             </Drawer.Header>
-            <Drawer.Body py={6} px={4}>
-              <VStack align="stretch" gap={2}>
+            <Drawer.Body py={4} px={2}>
+              <VStack align="stretch" gap={0}>
                 {navItems.map((item) => {
                   const isActive = activeSection === item.id
                   return (
@@ -213,33 +189,16 @@ function Navbar({ activeSection = 'home' }: NavbarProps) {
                       onClick={(e) => { e.preventDefault(); scrollToSection(item.id) }}
                       px={4}
                       py={3}
-                      borderRadius="lg"
-                  color={isActive ? '#6366f1' : 'gray.700'}
-                  fontWeight={isActive ? 600 : 500}
-                  fontSize="md"
-                  bg={isActive ? 'indigo.50' : 'transparent'}
-                  transition="all 0.2s"
-                  _hover={{
-                    color: '#6366f1',
-                    bg: 'indigo.50',
-                    pl: isActive ? 4 : 5,
-                    borderLeft: '3px solid',
-                    borderColor: '#6366f1',
-                  }}
+                      borderRadius="md"
+                      color={isActive ? 'indigo.600' : 'gray.700'}
+                      fontWeight={isActive ? 600 : 500}
+                      fontSize="sm"
+                      bg={isActive ? 'indigo.50' : 'transparent'}
+                      borderLeft="3px solid"
+                      borderColor={isActive ? 'indigo.500' : 'transparent'}
+                      _hover={{ bg: 'gray.50', color: 'indigo.600' }}
                     >
-                      <Flex align="center" gap={2}>
-                        {isActive && (
-                          <Box
-                            w="8px"
-                            h="8px"
-                            borderRadius="full"
-                            bg="#6366f1"
-                            boxShadow="0 0 8px rgba(99, 102, 241, 0.6)"
-                            flexShrink={0}
-                          />
-                        )}
-                        <Text>{item.label}</Text>
-                      </Flex>
+                      {item.label}
                     </Link>
                   )
                 })}

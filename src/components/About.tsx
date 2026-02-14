@@ -18,7 +18,7 @@ function About() {
     {
       icon: <FaGraduationCap />,
       title: 'Academic Excellence',
-      description: 'Maintained consistent 9+/10 GPA across all High School academic years, including Informatics, Mathematics, and Physics',
+      description: 'Maintained consistent 9+/10 overall GPA across all High School academic years, across subjects such as Informatics, Mathematics, and Physics',
       color: 'purple',
     },
     {

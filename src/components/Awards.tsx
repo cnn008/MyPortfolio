@@ -203,10 +203,17 @@ function Awards() {
                     {award.year}
                   </Badge>
                   
-                  {/* Description */}
-                  <Text color="gray.700" lineHeight="tall" fontSize="sm" fontWeight={400} pt={2}>
-                    {award.description}
-                  </Text>
+                  {/* Description - one sentence per line */}
+                  <VStack align="stretch" gap={1} pt={2}>
+                    {award.description
+                      .split(/(?<=[.!?])\s+/)
+                      .filter((s) => s.trim())
+                      .map((sentence, i) => (
+                        <Text key={i} color="gray.700" lineHeight="tall" fontSize="sm" fontWeight={400} as="span" display="block">
+                          ✓ {sentence.trim()}
+                        </Text>
+                      ))}
+                  </VStack>
                 </VStack>
               </Box>
             )})}

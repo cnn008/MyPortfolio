@@ -15,7 +15,9 @@ function Education() {
       specialization: 'Specialized Class in Mathematics',
       logo: husLogo,
       description: [
-        'GPA: 9.4/10 (Grade 10), 9.6/10 (Grade 11), 9.8/10 (Semester 1, Grade 12)',
+        '9.4/10 (Grade 10)',
+        '9.6/10 (Grade 11)',
+        '9.8/10 (Semester 1, Grade 12)',
       ],
     },
   ]
@@ -236,7 +238,7 @@ function Education() {
                             alignItems="center"
                             justifyContent="center"
                             flexShrink={0}
-                            color="white"
+                            color="gray.800"
                             fontWeight="bold"
                             fontSize="sm"
                           >

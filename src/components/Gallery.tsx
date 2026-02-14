@@ -1,70 +1,59 @@
-import { useState } from 'react'
-import { Box, Heading, SimpleGrid, Image, Text, Dialog, VStack } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/react'
+import { useState, useMemo } from 'react'
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Text,
+  VStack,
+  Button,
+  HStack,
+  useDisclosure,
+  Dialog,
+  Badge,
+} from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
-import photo1 from '../assets/photo_1.jpg'
-import photo2 from '../assets/photo_2.jpg'
-import photo4 from '../assets/photo_4.jpg'
-import photo3 from '../assets/photo_3.jpg'
-import photo5 from '../assets/photo_5.jpg'
-import photo6 from '../assets/photo_6.jpg'
+import { FiExternalLink, FiFileText } from 'react-icons/fi'
+
+// Load all PDFs from the two asset folders (eager URLs for build)
+const certGlob = import.meta.glob<string>(
+  '../assets/certificates_of_awards/*.pdf',
+  { query: '?url', import: 'default', eager: true }
+)
+const extraGlob = import.meta.glob<string>(
+  '../assets/extra_activities/*.pdf',
+  { query: '?url', import: 'default', eager: true }
+)
+
+/** Derive display title from filename: remove .pdf and leading "N." */
+function titleFromPath(path: string): string {
+  const filename = path.split('/').pop() || path
+  const noExt = filename.replace(/\.pdf$/i, '')
+  const noLeadingNum = noExt.replace(/^\d+\.\s*/, '')
+  return noLeadingNum.trim() || noExt
+}
+
+type PdfItem = { title: string; url: string }
+
+function buildPdfList(glob: Record<string, string>): PdfItem[] {
+  return Object.entries(glob)
+    .map(([path, url]) => ({ title: titleFromPath(path), url }))
+    .sort((a, b) => a.title.localeCompare(b.title))
+}
 
 function Gallery() {
+  const [selectedPdf, setSelectedPdf] = useState<string | null>(null)
   const { open, onOpen, onClose } = useDisclosure()
-  const [selectedImage, setSelectedImage] = useState<any>(null)
+
+  const certificates = useMemo(() => buildPdfList(certGlob as Record<string, string>), [])
+  const extraActivities = useMemo(() => buildPdfList(extraGlob as Record<string, string>), [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) element.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const images = [
-    {
-      id: 1,
-      src: photo1,
-      alt: 'Gallery Image 1',
-      title: 'Zhonghua Secondary School',
-      description: 'My first school in Singapore, completed the GCE O-levels with 7 A\'s',
-    },
-    {
-      id: 2,
-      src: photo2,
-      alt: 'Gallery Image 2',
-      title: 'Saint Andrew\'s Junior College',
-      description: 'My next school in Singapore, completed my A-levels with 6 A\'s',
-    },
-    {
-      id: 3,
-      src: photo3,
-      alt: 'Gallery Image 3',
-      title: 'National University of Singapore',
-      description: 'Started my undergraduate studies in Singapore, completed my Bachelor\'s degree in Computer Science with Honours',
-    },
-    {
-      id: 4,
-      src: photo4,
-      alt: 'Gallery Image 4',
-      title: 'The University of Texas at Austin',
-      description: 'Graduated from NUS and started my master\'s studies in Computer Science at UT Austin',
-    },
-    {
-      id: 5,
-      src: photo5,
-      alt: 'Gallery Image 5',
-      title: 'Sea Limited',
-      description: 'My first job in Singapore, working as a Data Engineer',
-    },
-    {
-      id: 6,
-      src: photo6,
-      alt: 'Gallery Image 6',
-      title: 'Rakuten Asia Pte Ltd',
-      description: 'My second job in Singapore, working as a Software Engineer',
-    },
-  ]
-
-  const openModal = (image: any) => {
-    setSelectedImage(image)
+  const openPreview = (url: string) => {
+    setSelectedPdf(url)
     onOpen()
   }
 
@@ -98,7 +87,7 @@ function Gallery() {
             border="2px solid"
             borderColor="indigo.100"
           >
-            📸 Learning Journey
+            📜 Certificates & Awards
           </Box>
           <Heading
             as="h2"
@@ -109,75 +98,303 @@ function Gallery() {
             color="gray.800"
             letterSpacing="tight"
           >
-            Learning Journey
+            Certificates & Awards
           </Heading>
+          <Text fontSize="lg" color="gray.600" maxW="600px" mx="auto">
+            PDF certificates from awards and extracurricular activities.
+          </Text>
         </VStack>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
-          {images.map((image) => (
-            <Box
-              key={image.id}
-              cursor="pointer"
-              onClick={() => openModal(image)}
-              borderRadius="2xl"
-              overflow="hidden"
-              boxShadow="0 4px 20px rgba(0, 0, 0, 0.08)"
-              bg="white"
+
+        {/* Awards & Certificates */}
+        <VStack align="stretch" gap={6} mb={12}>
+          <HStack gap={3} flexWrap="wrap">
+            <Badge
+              bg="indigo.100"
+              color="indigo.800"
               border="1px solid"
-              borderColor="gray.100"
-              _hover={{
-                transform: 'scale(1.03)',
-                boxShadow: '0 12px 40px rgba(99, 102, 241, 0.2)',
-                borderColor: 'indigo.300',
-              }}
-              transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+              borderColor="indigo.200"
+              px={4}
+              py={2}
+              borderRadius="full"
+              fontSize="sm"
+              fontWeight={700}
             >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                w="100%"
-                h="220px"
-                objectFit="cover"
-              />
-              <Box p={5}>
-                <Heading as="h3" fontSize="md" mb={2} fontWeight={600} color="gray.900">
-                  {image.title}
-                </Heading>
-                <Text fontSize="sm" color="gray.800" lineHeight="tall" fontWeight={500}>
-                  {image.description}
-                </Text>
+              Awards & Certificates
+            </Badge>
+            <Text fontSize="sm" color="gray.500">
+              {certificates.length} documents
+            </Text>
+          </HStack>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={5}>
+            {certificates.map((item) => (
+              <Box
+                key={item.url}
+                borderRadius="2xl"
+                overflow="hidden"
+                boxShadow="0 4px 20px rgba(0, 0, 0, 0.08)"
+                bg="white"
+                border="2px solid"
+                borderColor="gray.100"
+                position="relative"
+                _hover={{
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 12px 40px rgba(99, 102, 241, 0.2)',
+                  borderColor: 'indigo.300',
+                }}
+                transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+              >
+                <Box
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  right={0}
+                  h="4px"
+                  bgGradient="linear(135deg, #6366f1, #8b5cf6)"
+                />
+                {/* Full certificate preview - visible without clicking, centred */}
+                <Box
+                  w="100%"
+                  minH={{ base: '360px', md: '480px' }}
+                  h={{ base: '360px', md: '520px' }}
+                  bg="gray.100"
+                  borderBottom="1px solid"
+                  borderColor="gray.200"
+                  overflow="hidden"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <iframe
+                    src={`${item.url}#view=Fit`}
+                    title={`Preview: ${item.title}`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                      pointerEvents: 'none',
+                      display: 'block',
+                    }}
+                  />
+                </Box>
+                <VStack align="stretch" p={5} gap={4}>
+                  <HStack gap={3}>
+                    <Box
+                      p={3}
+                      borderRadius="xl"
+                      bg="indigo.50"
+                      color="indigo.600"
+                      fontSize="2xl"
+                    >
+                      <FiFileText />
+                    </Box>
+                    <Heading as="h3" fontSize="md" fontWeight={600} color="gray.900" lineHeight="short" lineClamp={3}>
+                      {item.title}
+                    </Heading>
+                  </HStack>
+                  <HStack gap={2} flexWrap="wrap">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      colorPalette="indigo"
+                      onClick={() => window.open(item.url, '_blank')}
+                    >
+                      <HStack gap={2}>
+                        <FiExternalLink />
+                        <Text>Open PDF</Text>
+                      </HStack>
+                    </Button>
+                    <Button
+                      size="sm"
+                      bg="indigo.600"
+                      color="gray.800"
+                      _hover={{ bg: 'indigo.700' }}
+                      onClick={() => openPreview(item.url)}
+                    >
+                      Full-screen preview
+                    </Button>
+                  </HStack>
+                </VStack>
               </Box>
-            </Box>
-          ))}
-        </SimpleGrid>
+            ))}
+          </SimpleGrid>
+        </VStack>
+
+        {/* Extra Activities */}
+        <VStack align="stretch" gap={6}>
+          <HStack gap={3} flexWrap="wrap">
+            <Badge
+              bg="indigo.100"
+              color="indigo.800"
+              border="1px solid"
+              borderColor="indigo.200"
+              px={4}
+              py={2}
+              borderRadius="full"
+              fontSize="sm"
+              fontWeight={700}
+            >
+              Extra Activities
+            </Badge>
+            <Text fontSize="sm" color="gray.500">
+              {extraActivities.length} documents
+            </Text>
+          </HStack>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={5}>
+            {extraActivities.map((item) => (
+              <Box
+                key={item.url}
+                borderRadius="2xl"
+                overflow="hidden"
+                boxShadow="0 4px 20px rgba(0, 0, 0, 0.08)"
+                bg="white"
+                border="2px solid"
+                borderColor="gray.100"
+                position="relative"
+                _hover={{
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 12px 40px rgba(99, 102, 241, 0.2)',
+                  borderColor: 'indigo.300',
+                }}
+                transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+              >
+                <Box
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  right={0}
+                  h="4px"
+                  bgGradient="linear(135deg, #6366f1, #8b5cf6)"
+                />
+                {/* Full certificate preview - visible without clicking, centred */}
+                <Box
+                  w="100%"
+                  minH={{ base: '360px', md: '480px' }}
+                  h={{ base: '360px', md: '520px' }}
+                  bg="gray.100"
+                  borderBottom="1px solid"
+                  borderColor="gray.200"
+                  overflow="hidden"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <iframe
+                    src={`${item.url}#view=Fit`}
+                    title={`Preview: ${item.title}`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                      pointerEvents: 'none',
+                      display: 'block',
+                    }}
+                  />
+                </Box>
+                <VStack align="stretch" p={5} gap={4}>
+                  <HStack gap={3}>
+                    <Box
+                      p={3}
+                      borderRadius="xl"
+                      bg="indigo.50"
+                      color="indigo.600"
+                      fontSize="2xl"
+                    >
+                      <FiFileText />
+                    </Box>
+                    <Heading as="h3" fontSize="md" fontWeight={600} color="gray.900" lineHeight="short" lineClamp={3}>
+                      {item.title}
+                    </Heading>
+                  </HStack>
+                  <HStack gap={2} flexWrap="wrap">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      colorPalette="indigo"
+                      onClick={() => window.open(item.url, '_blank')}
+                    >
+                      <HStack gap={2}>
+                        <FiExternalLink />
+                        <Text>Open PDF</Text>
+                      </HStack>
+                    </Button>
+                    <Button
+                      size="sm"
+                      bg="indigo.600"
+                      color="gray.800"
+                      _hover={{ bg: 'indigo.700' }}
+                      onClick={() => openPreview(item.url)}
+                    >
+                      Full-screen preview
+                    </Button>
+                  </HStack>
+                </VStack>
+              </Box>
+            ))}
+          </SimpleGrid>
+        </VStack>
       </Box>
 
-      <Dialog.Root open={open} onOpenChange={(e) => !e.open && onClose()}>
+      <Dialog.Root open={open} onOpenChange={(e) => !e.open && (onClose(), setSelectedPdf(null))}>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content maxW="800px">
-            <Dialog.CloseTrigger />
-            {selectedImage && (
-              <Box p={6}>
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  w="100%"
-                  mb={4}
-                  borderRadius="md"
-                />
-                <Heading as="h3" fontSize="md" mb={2} color="gray.900">
-                  {selectedImage.title}
-                </Heading>
-                <Text color="gray.800" fontWeight={500}>
-                  {selectedImage.description}
-                </Text>
-              </Box>
+          <Dialog.Content maxW="95vw" w="960px" h="90vh" display="flex" flexDirection="column">
+            <Dialog.CloseTrigger
+              position="absolute"
+              top={3}
+              right={3}
+              zIndex={10}
+              color="gray.800"
+              bg="white"
+              border="1px solid"
+              borderColor="gray.200"
+              _hover={{ bg: 'gray.100', color: 'indigo.600', borderColor: 'indigo.300' }}
+            />
+            {selectedPdf && (
+              <>
+                <Box flex="1" minH="0" display="flex" flexDirection="column" p={4} pt={12} gap={3}>
+                  <Box
+                    flex="1"
+                    minH="400px"
+                    borderRadius="xl"
+                    overflow="hidden"
+                    bg="gray.100"
+                    border="1px solid"
+                    borderColor="gray.200"
+                  >
+                    <iframe
+                      src={`${selectedPdf}#view=FitH`}
+                      title="PDF preview"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        minHeight: '70vh',
+                        border: 'none',
+                        display: 'block',
+                      }}
+                    />
+                  </Box>
+                  <HStack justify="flex-end" gap={2}>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      colorPalette="indigo"
+                      onClick={() => window.open(selectedPdf, '_blank')}
+                    >
+                      <HStack gap={2}>
+                        <FiExternalLink />
+                        <Text>Open in new tab</Text>
+                      </HStack>
+                    </Button>
+                  </HStack>
+                </Box>
+              </>
             )}
           </Dialog.Content>
         </Dialog.Positioner>
       </Dialog.Root>
 
-      {/* Scroll Arrow */}
       <Box
         position="absolute"
         bottom={8}
@@ -198,4 +415,3 @@ function Gallery() {
 }
 
 export default Gallery
-
