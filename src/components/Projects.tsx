@@ -23,7 +23,7 @@ function Projects() {
         'Maintained an average response latency of <1.5s to ensure optimal user experience',
       ],
       technologies: ['React', 'Vite', 'FastAPI', 'Supabase', 'Google Gemini', 'AI Agent', 'SSE', 'Python'],
-      github: '#',
+      github: 'https://github.com/cnn008/We2Go',
       demo: 'https://www.we2go.asia/',
       previewUrl: 'https://www.we2go.asia/',
       previewType: 'website' as const,
@@ -43,6 +43,18 @@ function Projects() {
       demo: 'https://drive.google.com/file/d/18g6xcmIwRbBHx4eAXwpRzZr8RlPJvfWT/view',
       previewUrl: 'https://drive.google.com/file/d/18g6xcmIwRbBHx4eAXwpRzZr8RlPJvfWT/preview',
       previewType: 'pdf' as const,
+    },
+    {
+      title: 'Research Collaborator - VNU Institute of Vietnamese Studies and Development Science',
+      period: '03/2025 – 10/2025',
+      description: 'Developed the "Smart Community-Based Tourism Map Model" to promote sustainable tourism in Ta Xua mountain range, Son La Province, Vietnam.',
+      details: [
+        'Built the "Smart Community-Based Tourism Map Model" by integrating spatial information using Geographic Information Systems and database management systems to evaluate tourism resources and existing community models.',
+        'Applied technical expertise in AI, Data Analytics, and Web/App development to transform raw data into actionable insights, promoting sustainable tourism and enhancing the value of Ta Xua\'s cultural assets.',
+      ],
+      technologies: ['GIS', 'Database', 'AI', 'Data Analytics', 'Web/App Development', 'Sustainable Tourism'],
+      github: '#',
+      demo: '#',
     },
   ]
 

@@ -90,17 +90,6 @@ function Gallery() {
           >
             📜 Certificates & Awards
           </Box>
-          <Heading
-            as="h2"
-            fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
-            fontWeight={800}
-            textAlign="center"
-            lineHeight="shorter"
-            color="gray.800"
-            letterSpacing="tight"
-          >
-            Certificates & Awards
-          </Heading>
           <Text fontSize="lg" color="gray.600" maxW="600px" mx="auto">
             PDF certificates from awards and extracurricular activities.
           </Text>

@@ -9,6 +9,20 @@ function ExtracurricularActivities() {
   
   const activities = [
     {
+      title: "Children's Reading Station",
+      period: '2024–2025',
+      roles: [
+        {
+          role: 'Co-founder & Project Lead',
+          description: 'Spearheaded a national charity project recognized by VTV1-2025 Education Promotion Program and WeChoice Award 2024. Led 50+ members and collaborators; responsible for operations, logistics, and distribution data. Developed process for receiving, sorting, and transporting books based on school needs. Coordinated sponsors, volunteers, and local authorities; led communication strategies and media ambassadors.',
+        },
+        {
+          role: 'Fundraising & Impact',
+          description: 'Raised VND 150,000,000 total. Delivered: 45 textbook sets (grades 1–9), 900 books, 600 notebooks, 2000 pens, 20 computer-lab headphone sets, 6 library bookshelves, 1× 55" TV, 324 cake/milk portions for primary and secondary students, and VND 7,000,000 for handwashing stations at schools.',
+        },
+      ],
+    },
+    {
       title: 'HSGS Code Camp',
       period: '2024-2025',
       roles: [
@@ -84,17 +98,6 @@ function ExtracurricularActivities() {
           >
             🌟 Extracurricular Activities
           </Box>
-          <Heading
-            as="h2"
-            fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
-            fontWeight={800}
-            textAlign="center"
-            lineHeight="shorter"
-            color="gray.800"
-            letterSpacing="tight"
-          >
-            Extracurricular Activities
-          </Heading>
         </VStack>
         
         <VStack align="stretch" gap={8}>

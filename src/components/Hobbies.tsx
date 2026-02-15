@@ -54,17 +54,6 @@ function Hobbies() {
           >
             🎯 Hobbies
           </Box>
-          <Heading
-            as="h2"
-            fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
-            fontWeight={800}
-            textAlign="center"
-            lineHeight="shorter"
-            color="gray.800"
-            letterSpacing="tight"
-          >
-            Hobbies
-          </Heading>
         </VStack>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} maxW="800px" mx="auto">
