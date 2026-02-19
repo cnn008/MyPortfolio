@@ -1,4 +1,4 @@
-import { Box, Heading, Text, VStack, SimpleGrid } from '@chakra-ui/react'
+import { Box, Heading, Text, VStack, SimpleGrid, Link } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
 import { FaCode, FaGraduationCap, FaTrophy, FaUsers, FaLightbulb, FaHandsHelping } from 'react-icons/fa'
 
@@ -240,7 +240,24 @@ function About() {
                     color="gray.600"
                     lineHeight="tall"
                   >
-                    {item.description}
+                    {item.title === 'Achievements' ? (
+                      <>
+                        Secured multiple competition wins, top 1% chess player on{' '}
+                        <Link
+                          href="https://www.chess.com/member/nchuong89"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          color="indigo.600"
+                          fontWeight={600}
+                          _hover={{ textDecoration: 'underline' }}
+                        >
+                          Chess.com
+                        </Link>
+                        , and recognition for research contributions
+                      </>
+                    ) : (
+                      item.description
+                    )}
                   </Text>
                 </Box>
               ))}

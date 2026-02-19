@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, Container, Heading, Text, Button, Flex, VStack, Link, Image, HStack, Badge } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaEnvelope } from 'react-icons/fa'
 import { HiDownload } from 'react-icons/hi'
 import profileImage from '../assets/profile.png'
 import resumePdf from '../assets/resume.pdf?url'
@@ -279,9 +279,17 @@ function Hero() {
                 <Text fontSize="2xl" fontWeight={800} color="pink.300">
                   Top 1% Worldwide
                 </Text>
-                <Text fontSize="xs" color="gray.800" opacity={0.9}>
+                <Link
+                  href="https://www.chess.com/member/nchuong89"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  fontSize="xs"
+                  color="gray.800"
+                  opacity={0.9}
+                  _hover={{ opacity: 1, textDecoration: 'underline' }}
+                >
                   Chess.com
-                </Text>
+                </Link>
               </VStack>
             </HStack>
 
@@ -379,22 +387,6 @@ function Hero() {
                 }}
               >
                 <FaGithub size={28} />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/quoc-hung-nham/"
-                target="_blank"
-                rel="noopener noreferrer"
-                color="gray.800"
-                _hover={{
-                  color: 'white',
-                  transform: 'translateY(-4px) scale(1.2)',
-                }}
-                transition="all 0.3s"
-                css={{
-                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))',
-                }}
-              >
-                <FaLinkedin size={28} />
               </Link>
               <Link
                 href="mailto:chuongnguyenng@gmail.com"

@@ -1,5 +1,7 @@
-import { Box, Heading, Text, SimpleGrid, VStack } from '@chakra-ui/react'
+import { Box, Heading, Text, SimpleGrid, VStack, Link } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
+
+const CHESS_COM_PROFILE = 'https://www.chess.com/member/nchuong89'
 
 function Hobbies() {
   const scrollToSection = (sectionId: string) => {
@@ -117,7 +119,23 @@ function Hobbies() {
                     fontWeight={500}
                     textAlign="center"
                   >
-                    {hobby.achievement}
+                    {hobby.name === 'Chess' ? (
+                      <>
+                        Achieved top 1% Worldwide at{' '}
+                        <Link
+                          href={CHESS_COM_PROFILE}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          color="indigo.600"
+                          fontWeight={600}
+                          _hover={{ textDecoration: 'underline' }}
+                        >
+                          Chess.com
+                        </Link>
+                      </>
+                    ) : (
+                      hobby.achievement
+                    )}
                   </Text>
                 </Box>
               </VStack>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Box, Heading, Text, VStack, HStack, Link, Button, Input, Textarea, SimpleGrid } from '@chakra-ui/react'
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaEnvelope } from 'react-icons/fa'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -174,29 +174,6 @@ function Contact() {
                     color="gray.600"
                   >
                     <FaGithub size={20} />
-                  </Box>
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/quoc-hung-nham/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  _hover={{ textDecoration: 'none' }}
-                >
-                  <Box
-                    w="44px"
-                    h="44px"
-                    borderRadius="lg"
-                    bg="white"
-                    border="1px solid"
-                    borderColor="gray.200"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    _hover={{ borderColor: 'indigo.400', color: 'indigo.600', bg: 'indigo.50' }}
-                    transition="all 0.2s"
-                    color="gray.600"
-                  >
-                    <FaLinkedin size={20} />
                   </Box>
                 </Link>
                 <Link href="mailto:chuongnguyenng@gmail.com" _hover={{ textDecoration: 'none' }}>

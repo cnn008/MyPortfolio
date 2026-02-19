@@ -1,6 +1,6 @@
 import { Box, Heading, Text, Flex, VStack, SimpleGrid, Image, Badge } from '@chakra-ui/react'
 import { HiArrowDown } from 'react-icons/hi'
-import husLogo from '../assets/hus_logo.png'
+import husLogo from '../assets/hus_logo.jpg'
 
 function Education() {
   const scrollToSection = (sectionId: string) => {
@@ -33,7 +33,7 @@ function Education() {
     {
       name: 'IELTS',
       score: '7.5',
-      organization: 'IDP',
+      organization: 'British Council',
       date: '2024',
       description: 'Overall Band Score: 7.5',
     },
