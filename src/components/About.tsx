@@ -18,25 +18,25 @@ function About() {
     {
       icon: <FaGraduationCap />,
       title: 'Academic Excellence',
-      description: 'Maintained consistent 9+/10 overall GPA across all High School academic years, across subjects such as Informatics, Mathematics, and Physics',
+      description: 'Maintained consistent 9+/10 overall GPA across all High School academic years and across subjects such as Informatics, Mathematics, and Physics',
       color: 'purple',
     },
     {
       icon: <FaLightbulb />,
       title: 'AI Innovation',
-      description: 'Built Computer Vision systems with high accuracy, from travel planning to traffic detection',
+      description: 'Built Computer Vision and Machine Learning systems with high accuracy, from travel planning to traffic detection',
       color: 'pink',
     },
     {
       icon: <FaUsers />,
       title: 'Teaching & Mentoring',
-      description: 'Led Code Camp, teaching C++ fundamentals, and helping students achieve their goals',
+      description: 'Led Code Camp for High School participants, taught C++ fundamentals, and helped students achieve their goals',
       color: 'blue',
     },
     {
       icon: <FaTrophy />,
       title: 'Achievements',
-      description: 'Secured multiple competition wins, top 1% chess player, and recognition for research contributions',
+      description: 'Secured multiple competition wins, top 1% chess player, and gained recognition for research contributions',
       color: 'cyan',
     },
     {
